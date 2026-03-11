@@ -5,13 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using mystock.Helper;
 
 namespace mystock.Pages
 {
@@ -23,11 +17,25 @@ namespace mystock.Pages
         public LoginPage()
         {
             InitializeComponent();
+
+            txtUser.Focus();
         }
 
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            if (txtUser.Text == "")
+            {
+                txtUser.Focus();
+                return;
+            }
+
+            if (txtPass.Password == "")
+            {
+                txtPass.Focus();
+                return;
+            }
+
             if (txtUser.Text == "admin" && txtPass.Password == "1234")
             {
                 MainWindow main = (MainWindow)Application.Current.MainWindow;
@@ -37,7 +45,7 @@ namespace mystock.Pages
             }
             else
             {
-                MessageBox.Show("Login Failed");
+                Alert.Warning("Login Failed");
             }
         }
     }

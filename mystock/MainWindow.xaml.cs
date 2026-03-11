@@ -1,22 +1,6 @@
-﻿using mystock.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using mystock.Components;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
+using mystock.Helper;
 
 
 namespace mystock
@@ -49,13 +33,11 @@ namespace mystock
 
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show(
-             "ต้องการออกจากระบบ หรือไม่ ?",
-             "แจ้งเตือน",
-             MessageBoxButton.YesNo,
-             MessageBoxImage.Question);
+            AlertDialog2 dialog = new AlertDialog2("ต้องการออกจากระบบ หรือไม่ ?", "question");
 
-            if (result == MessageBoxResult.Yes)
+            bool? result = dialog.ShowDialog();
+
+            if (result == true)
             {
                 MainMenu.Visibility = Visibility.Collapsed;
                 MainFrame.Navigate(new Pages.LoginPage());
@@ -65,16 +47,7 @@ namespace mystock
 
         private void Help_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show(
-             "เวอร์ชั่น 1.0.1",
-             "ช่วยเหลือ",
-             MessageBoxButton.OK,
-             MessageBoxImage.Information);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                System.Windows.Application.Current.Shutdown();
-            }
+            Alert.Info("เวอร์ชั่น 1.0.1");
 
         }
 

@@ -14,7 +14,10 @@ public class ProductService
         {
             conn.Open();
 
-            string sql = "SELECT id, product_code, product_name, price, stock FROM products";
+            string sql = "SELECT p.id, p.product_code, p.product_name, p.price, p.stock, p.is_active, p.category_id, c.category_name " +
+                "FROM products p " +
+                "INNER JOIN categories c " +
+                "ON p.category_id = c.id ";
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -27,7 +30,10 @@ public class ProductService
                     ProductCode = reader["product_code"].ToString(),
                     ProductName = reader["product_name"].ToString(),
                     Price = (decimal)reader["price"],
-                    Stock = (int)reader["stock"]
+                    Stock = (int)reader["stock"],
+                    IsActive = (bool)reader["is_active"],
+                    CategoryId = (int)reader["category_id"],
+                    CategoryName = (string)reader["category_name"]
                 });
             }
         }

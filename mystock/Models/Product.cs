@@ -13,6 +13,10 @@ namespace mystock.Models
         public string ProductName { get; set; }
         public decimal Price { get; set; }
         public int Stock { get; set; }
+        public bool IsActive { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+
         public bool IsOutOfStock
         {
             get { return Stock <= 0; }
@@ -25,5 +29,10 @@ namespace mystock.Models
         {
             get { return Stock > 0; }
         }
+        public string Status
+        {
+            get { return IsActive == true ? "ใช้งาน" : "ไม่ใช้งาน"; }
+        }
+
     }
 }

@@ -8,21 +8,20 @@
         WindowState="Maximized">
     <!--Title="MYPOS" Height="700" Width="auto">-->
 
-    <Grid Background="#ECECEC">
+    <Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- MENU -->
-        <Menu>
-            <MenuItem Header="สินค้า"/>
+        <!-- TOP MENU -->
 
-            <MenuItem Header="ขาย"/>
+        <Menu x:Name="MainMenu" Visibility="Collapsed">
 
+            <MenuItem Header="ขายสินค้า" Click="MenuSale_Click"/>
+            <MenuItem Header="สินค้า" Click="Product_Click"/>
             <MenuItem Header="รายงาน"/>
-
             <MenuItem Header="ตั้งค่า">
                 <MenuItem Header="ขาย -> เรียงจาก ก-ฮ"/>
                 <MenuItem Header="ขาย -> คงเหลือ มาก-น้อย"/>
@@ -30,297 +29,18 @@
 
             <MenuItem Header="ช่วยเหลือ" Click="Help_Click"/>
 
-            <MenuItem Header="Exit" Click="Exit_Click"/>
+            <MenuItem Header="ออกจากระบบ" Click="Logout_Click"/>
+
         </Menu>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
+        <!-- PAGE AREA -->
 
+        <Frame x:Name="MainFrame"
+               Grid.Row="1"
+               NavigationUIVisibility="Hidden"/>
 
-            <!-- CONTENT -->
-
-            <!-- ===================== -->
-            <!-- PRODUCT ZONE -->
-            <!-- ===================== -->
-
-            <Border Grid.Column="0"
-            Background="White"
-            Margin="10"
-            CornerRadius="10"
-            Padding="10">
-
-                <StackPanel>
-
-                    <TextBlock Text="ขายสินค้า"
-                       FontSize="22"
-                       FontWeight="Bold"
-                       Margin="0 0 0 10"/>
-
-                    <ScrollViewer>
-
-                        <ItemsControl x:Name="ProductGrid">
-
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-
-                            <ItemsControl.ItemTemplate>
-
-                                <DataTemplate>
-
-                                    <Button Width="270"
-                                    Height="130"
-                                    Margin="7"
-                                    Background="#3498DB"
-                                    Foreground="White"
-                                    FontSize="21"
-                                    Click="Product_Click"
-                                    Tag="{Binding}">
-                                        <!--IsEnabled="{Binding CanSell}">-->
-
-                                        <StackPanel>
-
-                                            <TextBlock Text="{Binding ProductName}"
-                                               TextAlignment="Center"
-                                               FontWeight="Bold"
-                                               TextWrapping="Wrap"/>
-
-                                            <TextBlock TextAlignment="Center" FontSize="14">
-                                             <Run Text="ราคา "/>
-                                             <Run Text="{Binding Price}"/>
-                                             <Run Text=" บาท"/>
-                                            </TextBlock>
-
-
-                                            <TextBlock Text="{Binding Stock, StringFormat=คงเหลือ {0}}"
-                                               Margin="10"
-                                               TextAlignment="Center"
-                                               FontSize="17">
-
-                                                <TextBlock.Style>
-                                                    <Style TargetType="TextBlock">
-                                                        <Setter Property="Foreground" Value="Green"/>
-
-                                                        <Style.Triggers>
-
-                                                            <!-- ใกล้หมด -->
-                                                            <DataTrigger Binding="{Binding IsLowStock}" Value="True">
-                                                                <Setter Property="Foreground" Value="Orange"/>
-                                                            </DataTrigger>
-
-                                                            <!-- หมด -->
-                                                            <DataTrigger Binding="{Binding IsOutOfStock}" Value="True">
-                                                                <Setter Property="Foreground" Value="Red"/>
-                                                            </DataTrigger>
-
-                                                        </Style.Triggers>
-
-                                                    </Style>
-                                                </TextBlock.Style>
-
-                                            </TextBlock>
-
-                                        </StackPanel>
-
-                                    </Button>
-
-                                </DataTemplate>
-
-                            </ItemsControl.ItemTemplate>
-
-                        </ItemsControl>
-
-                    </ScrollViewer>
-
-                </StackPanel>
-
-            </Border>
-
-
-            <!-- ===================== -->
-            <!-- BILL ZONE -->
-            <!-- ===================== -->
-
-            <Border Grid.Column="1"
-            Background="#F7F7F7"
-            Margin="10"
-            CornerRadius="10"
-            Padding="10">
-
-                <Grid>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-
-                    <!-- TITLE -->
-
-                    <TextBlock Text="รายการขาย"
-                       FontSize="20"
-                       FontWeight="Bold"
-                       Margin="0 0 0 10"/>
-
-
-                    <!-- BILL LIST -->
-
-                    <ListView Grid.Row="1"
-                      x:Name="SaleGrid"
-                      ScrollViewer.VerticalScrollBarVisibility="Auto" >
-
-                        <ListView.ItemTemplate>
-
-                            <DataTemplate>
-
-                                <Border BorderBrush="#DDD"
-                                BorderThickness="0 0 0 1"
-                                Padding="8">
-
-                                    <Grid>
-
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition MinWidth="250"/>
-                                            <ColumnDefinition Width="80"/>
-                                            <ColumnDefinition Width="80"/>
-                                        </Grid.ColumnDefinitions>
-
-                                        <!-- Product -->
-
-                                        <StackPanel>
-
-                                            <TextBlock Text="{Binding ProductName}"
-                                               FontWeight="Bold"
-                                               FontSize="16"/>
-
-                                            <StackPanel Orientation="Horizontal">
-
-                                                <Button Content="-"
-                                                Width="30"
-                                                Click="DecreaseQty_Click"
-                                                Tag="{Binding}"/>
-
-                                                <TextBox Width="40"
-                                                 Text="{Binding Qty, UpdateSourceTrigger=PropertyChanged}"
-                                                 HorizontalContentAlignment="Center"
-                                                 VerticalContentAlignment="Center"
-                                                 PreviewTextInput="Qty_PreviewTextInput"
-                                                 LostFocus="Qty_LostFocus"
-                                                 Tag="{Binding}"/>
-
-                                                <Button Content="+"
-                                                Width="30"
-                                                Click="IncreaseQty_Click"
-                                                Tag="{Binding}"/>
-
-                                            </StackPanel>
-
-                                        </StackPanel>
-
-                                        <!-- Total -->
-
-                                        <TextBlock Grid.Column="1"
-                                           Text="{Binding Total, StringFormat=N2}"
-                                           TextAlignment="Right"
-                                           VerticalAlignment="Center"
-                                           FontSize="16"
-                                           FontWeight="Bold"/>
-
-
-                                        <!-- DELETE -->
-
-                                        <Button Grid.Column="2"
-                                        Width="40"
-                                        Height="40"
-                                        Background="#E74C3C"
-                                        Foreground="White"
-                                        Click="DeleteItem_Click"
-                                        Tag="{Binding}">
-                                            <TextBlock Text=""
-                                               FontFamily="Segoe MDL2 Assets"
-                                               FontSize="18"
-                                               HorizontalAlignment="Center"
-                                               VerticalAlignment="Center"/>
-                                        </Button>
-
-                                    </Grid>
-
-                                </Border>
-
-                            </DataTemplate>
-
-                        </ListView.ItemTemplate>
-
-                    </ListView>
-
-
-                    <!-- TOTAL + PAYMENT -->
-
-                    <StackPanel Grid.Row="2">
-
-                        <Grid Height="80"
-                      Background="#070807"
-                      Margin="0 10">
-
-                            <StackPanel HorizontalAlignment="Right"
-                                VerticalAlignment="Bottom"
-                                Margin="10">
-
-                                <TextBlock Text="TOTAL"
-                                   Foreground="White"
-                                   FontSize="14"/>
-
-                                <TextBlock x:Name="TotalText"
-                                   Text="0.00 บาท"
-                                   Foreground="White"
-                                   FontSize="32"
-                                   FontWeight="Bold"
-                                   TextAlignment="Right"/>
-
-                            </StackPanel>
-
-                        </Grid>
-
-
-                        <!-- PAYMENT BUTTON -->
-
-                        <UniformGrid Columns="2">
-
-                            <Button Content="ชำระเงิน"
-                            Height="60"
-                            Background="#27AE60"
-                            Foreground="White"
-                            FontSize="18"
-                            Click="Pay_Click"/>
-
-                            <!--<Button Content="PromptPay"
-                            Height="60"
-                            Background="#2980B9"
-                            Foreground="White"
-                            FontSize="18"
-                            Click="PromptPay_Click"/>-->
-
-                            <Button Content="ยกเลิก"
-                            Height="60"
-                            Background="#E74C3C"
-                            Foreground="White"
-                            FontSize="18"
-                            Click="Cancel_Click"/>
-
-                        </UniformGrid>
-
-                    </StackPanel>
-
-                </Grid>
-
-            </Border>
-
-        </Grid>
     </Grid>
+
+
 
 </Window>

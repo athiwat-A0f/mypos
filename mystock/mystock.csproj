@@ -73,6 +73,9 @@
     <Compile Include="Component\AlertDialog.xaml.cs">
       <DependentUpon>AlertDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SellReportPage.xaml.cs">
+      <DependentUpon>SellReportPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PayWindow.xaml.cs">
       <DependentUpon>PayWindow.xaml</DependentUpon>
     </Compile>
@@ -109,6 +112,10 @@
     <Page Include="Component\AlertDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\SellReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PayWindow.xaml">
       <SubType>Designer</SubType>

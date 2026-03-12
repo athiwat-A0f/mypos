@@ -31,6 +31,15 @@ namespace mystock
             MainFrame.Navigate(new Pages.ProductPage());
         }
 
+        private void Stock_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.ProductPage());
+        }
+        private void SellReport_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new Pages.SellReportPage());
+        }
+
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
             AlertDialog2 dialog = new AlertDialog2("ต้องการออกจากระบบ หรือไม่ ?", "question");

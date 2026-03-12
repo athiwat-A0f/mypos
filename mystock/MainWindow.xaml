@@ -17,21 +17,130 @@
 
         <!-- TOP MENU -->
 
-        <Menu x:Name="MainMenu" Visibility="Collapsed">
+        <!--<Menu x:Name="MainMenu" Visibility="Collapsed" Padding="15">
 
-            <MenuItem Header="ขายสินค้า" Click="MenuSale_Click"/>
-            <MenuItem Header="สินค้า" Click="Product_Click"/>
-            <MenuItem Header="รายงาน"/>
-            <MenuItem Header="ตั้งค่า">
-                <MenuItem Header="ขาย -> เรียงจาก ก-ฮ"/>
-                <MenuItem Header="ขาย -> คงเหลือ มาก-น้อย"/>
+            <MenuItem Header="ขายสินค้า" Click="MenuSale_Click" Icon="🛒"/>
+            <MenuItem Header="สินค้า" Click="Product_Click" Icon="📦"/>
+            <MenuItem Header="สต็อกสินค้า" Click="Stock_Click" Icon="📊"/>
+
+            <MenuItem Header="รายงาน" Icon="📑">
+                <MenuItem Header="รายงานประวัติการขาย" Click="SellReport_Click"/>
             </MenuItem>
 
-            <MenuItem Header="ช่วยเหลือ" Click="Help_Click"/>
+            <MenuItem Header="ช่วยเหลือ" Click="Help_Click" Icon="❓"/>
+            <MenuItem Header="ออกจากระบบ" Click="Logout_Click" Icon="🚪"/>
 
-            <MenuItem Header="ออกจากระบบ" Click="Logout_Click"/>
+        </Menu>-->
 
-        </Menu>
+        <Border Background="#2C3E50" Height="50" x:Name="MainMenu" Visibility="Collapsed">
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+                <Button Click="MenuSale_Click"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="15,5"
+                Cursor="Hand">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE7BF;"
+                           Foreground="#2ECC71"
+                           FontSize="18"
+                           Margin="0,0,6,0"/>
+                        <TextBlock Text="ขายสินค้า"
+                           Foreground="White"
+                           FontSize="14"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="Product_Click"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="15,5"
+                Cursor="Hand">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE719;"
+                           Foreground="#3498DB"
+                           FontSize="18"
+                           Margin="0,0,6,0"/>
+                        <TextBlock Text="สินค้า"
+                           Foreground="White"
+                           FontSize="14"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="Stock_Click"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="15,5"
+                Cursor="Hand">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE8B7;"
+                           Foreground="#F39C12"
+                           FontSize="18"
+                           Margin="0,0,6,0"/>
+                        <TextBlock Text="สต็อกสินค้า"
+                           Foreground="White"
+                           FontSize="14"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="SellReport_Click"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="15,5"
+                Cursor="Hand">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE9D2;"
+                           Foreground="#9B59B6"
+                           FontSize="18"
+                           Margin="0,0,6,0"/>
+                        <TextBlock Text="รายงาน"
+                           Foreground="White"
+                           FontSize="14"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="Help_Click"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="15,5"
+                Cursor="Hand">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE897;"
+                           Foreground="#1ABC9C"
+                           FontSize="18"
+                           Margin="0,0,6,0"/>
+                        <TextBlock Text="ช่วยเหลือ"
+                           Foreground="White"
+                           FontSize="14"/>
+                    </StackPanel>
+                </Button>
+
+                <Button Click="Logout_Click"
+                Background="Transparent"
+                BorderThickness="0"
+                Padding="15,5"
+                Cursor="Hand">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE8AC;"
+                           Foreground="#E74C3C"
+                           FontSize="18"
+                           Margin="0,0,6,0"/>
+                        <TextBlock Text="ออกจากระบบ"
+                           Foreground="White"
+                           FontSize="14"/>
+                    </StackPanel>
+                </Button>
+
+            </StackPanel>
+
+        </Border>
 
         <!-- PAGE AREA -->
 

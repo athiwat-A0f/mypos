@@ -24,7 +24,6 @@ namespace mystock.Pages
     {
         DbService db = new DbService();
 
-        List<Product> products = new List<Product>();
         Product selectedProduct;
 
         List<Category> categories = new List<Category>();

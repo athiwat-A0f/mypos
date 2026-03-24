@@ -33,11 +33,11 @@ namespace mystock
 
         private void Stock_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Pages.ProductPage());
+            MainFrame.Navigate(new Pages.StockPage());
         }
-        private void SellReport_Click(object sender, RoutedEventArgs e)
+        private void Report_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(new Pages.SellReportPage());
+            MainFrame.Navigate(new Pages.ReportPage());
         }
 
         private void Logout_Click(object sender, RoutedEventArgs e)

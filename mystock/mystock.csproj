@@ -60,9 +60,13 @@
     </Compile>
     <Compile Include="Helper\Alert.cs" />
     <Compile Include="Models\Categories.cs" />
+    <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\SaleItem.cs" />
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StockPage.xaml.cs">
+      <DependentUpon>StockPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ProductPage.xaml.cs">
       <DependentUpon>ProductPage.xaml</DependentUpon>
@@ -73,13 +77,14 @@
     <Compile Include="Component\AlertDialog.xaml.cs">
       <DependentUpon>AlertDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\SellReportPage.xaml.cs">
-      <DependentUpon>SellReportPage.xaml</DependentUpon>
+    <Compile Include="Pages\ReportPage.xaml.cs">
+      <DependentUpon>ReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="PayWindow.xaml.cs">
       <DependentUpon>PayWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DbService.cs" />
+    <Compile Include="Services\StockService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Page Include="Component\AlertDialog2.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -101,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\StockPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\ProductPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,7 +122,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\SellReportPage.xaml">
+    <Page Include="Pages\ReportPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

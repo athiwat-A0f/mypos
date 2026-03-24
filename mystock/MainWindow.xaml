@@ -81,13 +81,13 @@
                            Foreground="#F39C12"
                            FontSize="18"
                            Margin="0,0,6,0"/>
-                        <TextBlock Text="สต็อกสินค้า"
+                        <TextBlock Text="สต๊อกสินค้า"
                            Foreground="White"
                            FontSize="14"/>
                     </StackPanel>
                 </Button>
 
-                <Button Click="SellReport_Click"
+                <Button Click="Report_Click"
                 Background="Transparent"
                 BorderThickness="0"
                 Padding="15,5"
